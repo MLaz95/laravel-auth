@@ -28,17 +28,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified'])
-        ->name('admin.')
-        ->prefix('admin')
-        ->group(function() {
-            // qui ci metto tutte le rotte che voglio che siano:
-                // raggruppate sotto lo stesso middelware
-                // i loro nomi inizino tutti con "admin.
-                // tutti i loro url inizino con "admin/"
+// Route::middleware(['auth', 'verified'])
+//         ->name('admin.')
+//         ->prefix('admin')
+//         ->group(function() {
+//             // qui ci metto tutte le rotte che voglio che siano:
+//                 // raggruppate sotto lo stesso middelware
+//                 // i loro nomi inizino tutti con "admin.
+//                 // tutti i loro url inizino con "admin/"
                 
-            Route::get('/', [ProjectController::class, 'index'])->name('index');
-        }
-);
+//             Route::get('/', [ProjectController::class, 'index'])->name('index');
+//         }
+// );
 
 require __DIR__.'/auth.php';

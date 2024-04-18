@@ -23,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -31,7 +31,10 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newProject = new Project();
+        $newProject->fill($request->all());
+        $newProject->save();
+        return redirect(route('projects.index'));
     }
 
     /**
@@ -45,17 +48,19 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $project->fill($request->all());
+        $project->save();
+        return redirect(route('projects.index'));
     }
 
     /**
