@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/projects');
-Route::resource('projects', ProjectController::class);
+Route::resource('projects', ProjectController::class)->only(['index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,17 +28,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::middleware(['auth', 'verified'])
-//         ->name('admin.')
-//         ->prefix('admin')
-//         ->group(function() {
-//             // qui ci metto tutte le rotte che voglio che siano:
-//                 // raggruppate sotto lo stesso middelware
-//                 // i loro nomi inizino tutti con "admin.
-//                 // tutti i loro url inizino con "admin/"
-                
-//             Route::get('/', [ProjectController::class, 'index'])->name('index');
-//         }
-// );
+Route::middleware(['auth', 'verified'])
+        ->name('admin.')
+        ->prefix('admin')
+        ->group(function() {
+            Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');
+            Route::post('projects/store', [ProjectController::class, 'store'])->name('projects.store');
+            Route::get('projects/{project}', [ProjectController::class, 'edit'])->name('projects.edit');
+            Route::put('projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+            Route::delete('projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+            
+        }
+);
 
 require __DIR__.'/auth.php';

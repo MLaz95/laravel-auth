@@ -2,7 +2,7 @@
 
 @section('content')
     
-    <form action="{{route('projects.update', $project->id)}}" method="POST">
+    <form action="{{route('admin.projects.update', $project->id)}}" method="POST">
         @csrf
         @method('PUT')
 
@@ -12,7 +12,7 @@
         </div>
         <div class="mb-3">
             <label for="description" class="form-label  text-capitalize">description</label>
-            <textarea type="password" class="form-control" name="description" value="{{$project->description}}"></textarea>
+            <textarea type="password" class="form-control" name="description" >{{$project->description}}</textarea>
         </div>
         <div class="mb-3">
             <label for="cover" class="form-label text-capitalize">cover</label>
