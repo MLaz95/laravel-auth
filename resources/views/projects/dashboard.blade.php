@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{ route('projects.create') }}" class="btn btn-primary my-2 me-5 float-end">Add a Project</a>
-    <table class="table">
+    <a href="{{ route('projects.create') }}" class="btn btn-primary my-2 float-end">Add a Project</a>
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th scope="col text-capitalize">name</th>
@@ -16,14 +16,16 @@
         <tbody>
             @foreach ($projects as $project)
                 <tr>
-                    <th scope="row">{{ $project->name }}</th>
+                    <th scope="row" class="text-capitalize">{{ $project->name }}</th>
                     <td>{{ $project->description }}</td>
                     <td>{{ $project->cover }}</td>
                     <td>{{ $project->tech }}</td>
                     <td>{{ $project->github }}</td>
-                    <td class="d-flex gap-2">
-                        <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-warning">Edit</a>
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                    <td >
+                        <div class="h-100 d-flex flex-column gap-3">
+                            <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-warning">Edit</a>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                        </div>
                     </td>
                 </tr>
             @endforeach
