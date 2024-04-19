@@ -15,7 +15,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
         // dd($projects);
-        return view('dashboard', compact('projects'));
+        return view('projects.dashboard', compact('projects'));
     }
 
     /**
@@ -69,6 +69,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect(route('index'));
+        return redirect(route('projects.index'));
     }
 }
