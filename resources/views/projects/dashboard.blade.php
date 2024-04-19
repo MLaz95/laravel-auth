@@ -4,13 +4,13 @@
     <a href="{{ route('projects.create') }}" class="btn btn-primary my-2 float-end">Add a Project</a>
     <table class="table table-striped table-hover">
         <thead>
-            <tr>
-                <th scope="col text-capitalize">name</th>
-                <th scope="col text-capitalize">description</th>
-                <th scope="col text-capitalize">cover</th>
-                <th scope="col text-capitalize">tech</th>
-                <th scope="col text-capitalize">github</th>
-                <th scope="col text-capitalize">buttons</th>
+            <tr class="text-capitalize">
+                <th scope="col">name</th>
+                <th scope="col">description</th>
+                <th scope="col">cover</th>
+                <th scope="col">tech</th>
+                <th scope="col">github</th>
+                <th scope="col">buttons</th>
             </tr>
         </thead>
         <tbody>
