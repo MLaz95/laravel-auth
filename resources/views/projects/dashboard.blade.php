@@ -23,6 +23,7 @@
                     <td>{{ $project->github }}</td>
                     <td >
                         <div class="h-100 d-flex flex-column gap-3">
+                            <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary">View</a>
                             <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-warning">Edit</a>
                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                         </div>
