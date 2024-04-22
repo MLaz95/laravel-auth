@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('projects.store') }}" method="POST">
+    <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -24,7 +24,7 @@
         </div>
         <div class="mb-3">
             <label for="cover" class="form-label text-capitalize">cover</label>
-            <input type="text" class="form-control @error('cover') is-invalid @enderror" value="{{old('cover')}}" name="cover">
+            <input type="file" class="form-control @error('cover') is-invalid @enderror" value="{{old('cover')}}" name="cover">
             @error('cover')
                 <div class="invalid-feedback">
                     {{ $message }}

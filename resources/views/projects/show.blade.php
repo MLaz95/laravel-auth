@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex gap-3">
-    <img src="{{$project->cover}}" alt="">
+    <img src="{{asset('storage/' . $project->cover)}}" alt="">
     <div>
         <h2>{{$project->name}}</h2>
         <p>{{$project->description}}</p>
@@ -11,6 +11,7 @@
         <div>{{$project->github}}</div>
 
         <div class="d-flex gap-3 my-3">
+            <a href="{{route('projects.index')}}" class="btn btn-secondary">Back</a>
             <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-warning">Edit</a>
             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
         </div>

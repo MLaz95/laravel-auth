@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 USE App\Http\Requests\StoreProjectRequest;
 
 class ProjectController extends Controller
@@ -34,6 +35,12 @@ class ProjectController extends Controller
     {
         $request->validated();
         $newProject = new Project();
+
+        if($request->hasFile('cover')){
+            $path = Storage::disk('public')->put('cover_images', $request->cover);
+            $newProject->cover = $path;
+        }
+
         $newProject->fill($request->all());
         $newProject->save();
         return redirect(route('projects.index'));
@@ -61,6 +68,10 @@ class ProjectController extends Controller
     public function update(StoreProjectRequest $request, Project $project)
     {
         $request->validated();
+        if($request->hasFile('cover')){
+            $path = Storage::disk('public')->put('cover_images', $request->cover);
+            $project->cover = $path;
+        }
         $project->fill($request->all());
         $project->save();
         return redirect(route('projects.index'));

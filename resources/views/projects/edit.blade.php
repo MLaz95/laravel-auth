@@ -2,7 +2,7 @@
 
 @section('content')
     
-    <form action="{{route('projects.update', $project->id)}}" method="POST">
+    <form action="{{route('projects.update', $project->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -26,7 +26,7 @@
         </div>
         <div class="mb-3">
             <label for="cover" class="form-label text-capitalize">cover</label>
-            <input type="text" class="form-control @error('cover') is-invalid @enderror" name="cover" value="{{$project->cover}}">
+            <input type="file" class="form-control @error('cover') is-invalid @enderror" name="cover" value="{{$project->cover}}">
             @error('cover')
                 <div class="invalid-feedback">
                     {{ $message }}
